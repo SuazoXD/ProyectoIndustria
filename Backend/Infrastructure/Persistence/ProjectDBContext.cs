@@ -1,4 +1,4 @@
-﻿
+﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
@@ -9,11 +9,13 @@ namespace Infrastructure.Persistence
         {
         }
 
-        //        public DbSet<Product> Products { get; set; }
+        // Agregamos el DbSet para Product
+        public DbSet<Product> Products { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            // Aquí puedes configurar las entidades, relaciones, etc.
         }
-
     }
 }

@@ -1,14 +1,19 @@
 using API.Configuration;
+using Aplication.Interfaces;
+using Aplication.Services;
 using Infrastructure.Persistence;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var dbConfig = new DBConnections();
 
-// Agregar conexión a la base de datos con Entity Framework
 builder.Services.AddDbContext<ProjectDBContext>(options =>
     options.UseSqlServer(dbConfig.ConnectionString));
+
+// Registro de repositorios y otros servicios
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -16,7 +21,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configurar Swagger solo en modo desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
