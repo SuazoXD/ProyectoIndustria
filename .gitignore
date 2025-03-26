@@ -1,3 +1,26 @@
+# -------------------------------
+# Archivos y carpetas de Visual Studio
+# -------------------------------
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.rsuser
+*.sln.docstates
+*.userprefs
+
+# -------------------------------
+# Resultados de compilación y directorios generados
+# -------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# Carpetas específicas del proyecto (Backend)
 backend/.vs
 backend/API/bin
 backend/API/obj
@@ -5,4 +28,50 @@ backend/Aplication/bin
 backend/Aplication/obj
 backend/*/bin
 backend/*/obj
+
+# -------------------------------
+# Dependencias y paquetes
+# -------------------------------
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+
+# -------------------------------
+# Archivos de caché y temporales
+# -------------------------------
+*.dbtcache.v2
+*.futdcache.v2
+*.vsidx
+
+# -------------------------------
+# Otros archivos que no se deben versionar
+# -------------------------------
 backend/API/.env
+
+# -------------------------------
+# Archivos de configuración sensibles
+# -------------------------------
+appsettings.json
+appsettings.Development.json
+
+# -------------------------------
+# Archivos relacionados con Swagger
+# -------------------------------
+swagger-output.json
+
+# -------------------------------
+# Archivos y carpetas del sistema operativo
+# -------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# -------------------------------
+# Archivos de logs, backup y temporales
+# -------------------------------
+*.log
+*.bak
+*.backup
+*.tmp
