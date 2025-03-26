@@ -1,6 +1,4 @@
-using Application.Interfaces;
-using Application.Services;
-using Infrastructure.Repositories;
+
 using Infrastructure.Persistence;
 using API.Configuration;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +11,6 @@ builder.Services.AddDbContext<ProjectDBContext>(options =>
     options.UseSqlServer(dbConfig.ConnectionString));
 
 // Registro de repositorios y servicios
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
