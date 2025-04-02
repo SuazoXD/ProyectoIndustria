@@ -8,6 +8,9 @@ using Infrastructure.Repositories.Privacidades;
 using Infrastructure.Repositories.Permisos;
 using Infrastructure.Repositories.Usuarios;
 using Infrastructure.Repositories.ListaDeReproduccion;
+using Infrastructure.Repositories.Archivos;
+using Infrastructure.Repositories.ContenidosPremium;
+using Infrastructure.Repositories.Creditos;
 
 namespace Infrastructure
 {
