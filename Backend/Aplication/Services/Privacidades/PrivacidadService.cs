@@ -1,11 +1,9 @@
-﻿using Application.DTOs.Privacidad;
-using Application.Interfaces.Privacidades;
+﻿using Aplication.DTOs.Privacidades;
+using Aplication.Interfaces.Privacidades;
 using Domain.Entities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Application.Services.Privacidades
+
+namespace Aplication.Services.Privacidades
 {
     public class PrivacidadService : IPrivacidadService
     {

@@ -1,8 +1,7 @@
 ﻿using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.ListasDeReproduccion
+
+namespace Aplication.Interfaces.ListasDeReproduccion
 {
     public interface IListaDeReproduccionRepository
     {

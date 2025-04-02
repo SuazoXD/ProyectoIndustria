@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Favorito
+﻿namespace Aplication.DTOs.Favorito
 {
     public class FavoritoRequestDTO
     {

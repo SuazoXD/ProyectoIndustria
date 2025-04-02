@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Factura
+﻿namespace Aplication.DTOs.Factura
 {
     public class FacturaRequestDTO
     {

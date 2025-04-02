@@ -1,7 +1,7 @@
 ﻿
 using Aplication.DTOs.Archivo;
 using Aplication.Interfaces.Archivos;
-using Application.Interfaces.Usuarios;
+using Aplication.Interfaces.Usuarios;
 using Domain.AggregateRoots;
 
 namespace Aplication.Services.Archivos

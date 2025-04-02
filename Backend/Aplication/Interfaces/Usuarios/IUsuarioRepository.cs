@@ -1,8 +1,7 @@
 ﻿using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.Usuarios
+
+namespace Aplication.Interfaces.Usuarios
 {
     public interface IUsuarioRepository
     {

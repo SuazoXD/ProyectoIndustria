@@ -1,11 +1,8 @@
-﻿using Application.DTOs.Usuario;
-using Application.Interfaces.Usuarios;
+﻿using Aplication.DTOs.Usuarios;
+using Aplication.Interfaces.Usuarios;
 using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Application.Services.Usuarios
+namespace Aplication.Services.Usuarios
 {
     public class UsuarioService : IUsuarioService
     {

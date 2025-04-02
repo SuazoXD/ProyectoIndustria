@@ -1,6 +1,6 @@
-﻿using System;
+﻿
 
-namespace Application.DTOs.Pago
+namespace Aplication.DTOs.Pago
 {
     public class PagoResponseDTO
     {

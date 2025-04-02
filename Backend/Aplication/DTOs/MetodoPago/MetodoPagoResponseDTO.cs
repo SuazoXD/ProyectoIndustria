@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.MetodoPago
+﻿namespace Aplication.DTOs.MetodoPago
 {
     public class MetodoPagoResponseDTO
     {

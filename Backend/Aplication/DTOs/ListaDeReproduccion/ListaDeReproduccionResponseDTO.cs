@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.ListaDeReproduccion
+﻿namespace Aplication.DTOs.ListaDeReproduccion
 {
     public class ListaDeReproduccionResponseDTO
     {

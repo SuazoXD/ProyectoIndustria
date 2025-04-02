@@ -1,11 +1,9 @@
-﻿using Application.DTOs.Favorito;
-using Application.Interfaces.Favoritos;
+﻿using Aplication.DTOs.Favorito;
+using Aplication.Interfaces.Favoritos;
 using Domain.Entities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Application.Services.Favoritos
+
+namespace Aplication.Services.Favoritos
 {
     public class FavoritoService : IFavoritoService
     {

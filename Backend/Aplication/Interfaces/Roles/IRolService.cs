@@ -1,9 +1,7 @@
 ﻿using Aplication.DTOs.Rol;
-using Application.DTOs.Rol;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.Roles
+
+namespace Aplication.Interfaces.Roles
 {
     public interface IRolService
     {

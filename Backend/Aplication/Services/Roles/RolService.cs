@@ -1,12 +1,10 @@
-﻿using Application.DTOs.Rol;
-using Application.Interfaces.Roles;
+﻿using Aplication.DTOs.Rol;
+using Aplication.Interfaces.Roles;
 using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
-namespace Application.Services.Roles
+
+namespace Aplication.Services.Roles
 {
     public class RolService : IRolService
     {

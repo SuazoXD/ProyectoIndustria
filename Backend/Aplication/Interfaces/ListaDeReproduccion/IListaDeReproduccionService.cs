@@ -1,8 +1,7 @@
-﻿using Application.DTOs.ListaDeReproduccion;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Aplication.DTOs.ListaDeReproduccion;
 
-namespace Application.Interfaces.ListasDeReproduccion
+
+namespace Aplication.Interfaces.ListasDeReproduccion
 {
     public interface IListaDeReproduccionService
     {

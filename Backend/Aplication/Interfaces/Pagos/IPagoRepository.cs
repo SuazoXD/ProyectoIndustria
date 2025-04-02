@@ -1,8 +1,7 @@
 ﻿using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.Pagos
+
+namespace Aplication.Interfaces.Pagos
 {
     public interface IPagoRepository
     {

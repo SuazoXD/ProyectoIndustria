@@ -1,8 +1,6 @@
-﻿using Application.DTOs.Pago;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Aplication.DTOs.Pago;
 
-namespace Application.Interfaces.Pagos
+namespace Aplication.Interfaces.Pagos
 {
     public interface IPagoService
     {

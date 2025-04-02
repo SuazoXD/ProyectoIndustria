@@ -1,8 +1,7 @@
-﻿using Application.DTOs.Factura;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Aplication.DTOs.Factura;
 
-namespace Application.Interfaces.Facturas
+
+namespace Aplication.Interfaces.Facturas
 {
     public interface IFacturaService
     {

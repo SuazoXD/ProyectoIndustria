@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Privacidad
+﻿namespace Aplication.DTOs.Privacidades
 {
     public class PrivacidadRequestDTO
     {

@@ -1,8 +1,6 @@
-﻿using Application.DTOs.MetodoPago;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Aplication.DTOs.MetodoPago;
 
-namespace Application.Interfaces.MetodosPago
+namespace Aplication.Interfaces.MetodosPago
 {
     public interface IMetodoPagoService
     {
