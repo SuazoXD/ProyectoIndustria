@@ -13,6 +13,8 @@ namespace Domain.Entities
         {
             Descripcion = descripcion;
         }
+
+        // Método público para actualizar la descripción
         public void UpdateDescripcion(string descripcion)
         {
             Descripcion = descripcion;

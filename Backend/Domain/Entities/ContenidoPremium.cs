@@ -1,8 +1,9 @@
-﻿using Domain.Common;
+﻿using Domain.AggregateRoots;
+using Domain.Common;
 
 namespace Domain.Entities
 {
-    public class ContenidoPremium
+    public class ContenidoPremium : AggregateRoot
     {
         public string NombreContenido { get; private set; }
         public string TipoContenido { get; private set; }
@@ -13,12 +14,12 @@ namespace Domain.Entities
 
         protected ContenidoPremium() { }
 
-        public ContenidoPremium (string nombreContenido, string tipoContenido, int idUsuario, decimal precio)
+        public ContenidoPremium(string nombreContenido, string tipoContenido, int idUsuario, decimal precio)
         {
             NombreContenido = nombreContenido;
             TipoContenido = tipoContenido;
             IdUsuario = idUsuario;
             Precio = precio;
         }
-}
     }
+}

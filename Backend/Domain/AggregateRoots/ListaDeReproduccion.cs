@@ -1,7 +1,8 @@
 ﻿using Domain.Common;
+using Domain.Entities;
 using System.Collections.Generic;
 
-namespace Domain.Entities
+namespace Domain.AggregateRoots
 {
     public class ListaDeReproduccion : AggregateRoot
     {
@@ -9,7 +10,6 @@ namespace Domain.Entities
         public string NombreLista { get; private set; }
         public string Descripcion { get; private set; }
 
-        // Navegación
         public Usuario Usuario { get; set; }
         public ICollection<ArchivoListaReproduccion> ArchivosListas { get; set; }
 
@@ -27,4 +27,3 @@ namespace Domain.Entities
         }
     }
 }
-

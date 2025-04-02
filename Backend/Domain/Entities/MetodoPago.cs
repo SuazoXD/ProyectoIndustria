@@ -1,4 +1,5 @@
-﻿using Domain.Common;
+﻿using Domain.AggregateRoots;
+using Domain.Common;
 using System.Collections.Generic;
 
 namespace Domain.Entities
@@ -31,4 +32,3 @@ namespace Domain.Entities
         }
     }
 }
-

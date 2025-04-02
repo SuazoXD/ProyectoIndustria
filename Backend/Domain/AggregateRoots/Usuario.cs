@@ -1,7 +1,9 @@
 ﻿using Domain.Common;
+using Domain.Entities;
 using System;
+using System.Collections.Generic;
 
-namespace Domain.Entities
+namespace Domain.AggregateRoots
 {
     public class Usuario : AggregateRoot
     {
@@ -13,7 +15,6 @@ namespace Domain.Entities
         public DateTime FechaRegistro { get; private set; }
 
         public Rol Rol { get; set; }
-
         public ICollection<Archivo> Archivos { get; set; }
         public ICollection<Pago> Pagos { get; set; }
         public ICollection<Credito> Creditos { get; set; }
