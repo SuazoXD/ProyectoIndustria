@@ -4,7 +4,7 @@ using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Archivos
 {
     public class ArchivoRepository : IArchivoRepository
     {
