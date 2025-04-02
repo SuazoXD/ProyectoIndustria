@@ -1,4 +1,5 @@
-﻿using Domain.Common;
+﻿using Domain.AggregateRoots;
+using Domain.Common;
 
 namespace Domain.Entities
 {
@@ -10,6 +11,7 @@ namespace Domain.Entities
         public bool Autodestruccion { get; private set; }
         public string DispositivosPermitidos { get; private set; }
 
+        // Navegación
         public Usuario Usuario { get; set; }
         public Archivo Archivo { get; set; }
         public Permiso Permiso { get; set; }

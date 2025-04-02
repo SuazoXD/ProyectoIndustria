@@ -1,7 +1,7 @@
 ﻿using Domain.Common;
 using System.Collections.Generic;
 
-namespace Domain.Entities
+namespace Domain.AggregateRoots
 {
     public class Rol : AggregateRoot
     {
