@@ -7,6 +7,7 @@ using Application.Interfaces;
 using Infrastructure.Repositories.Privacidades;
 using Infrastructure.Repositories.Permisos;
 using Infrastructure.Repositories.Usuarios;
+using Infrastructure.Repositories.ListaDeReproduccion;
 
 namespace Infrastructure
 {
