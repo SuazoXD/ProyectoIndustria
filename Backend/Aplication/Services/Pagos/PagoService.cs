@@ -1,11 +1,9 @@
-﻿using Application.DTOs.Pago;
-using Application.Interfaces.Pagos;
+﻿using Aplication.DTOs.Pago;
+using Aplication.Interfaces.Pagos;
 using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Application.Services.Pagos
+
+namespace Aplication.Services.Pagos
 {
     public class PagoService : IPagoService
     {

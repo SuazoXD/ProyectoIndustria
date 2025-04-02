@@ -1,8 +1,7 @@
-﻿using Application.DTOs.Permisos;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Aplication.DTOs.Permisos;
 
-namespace Application.Interfaces.Permisos
+
+namespace Aplication.Interfaces.Permisos
 {
     public interface IPermisoService
     {

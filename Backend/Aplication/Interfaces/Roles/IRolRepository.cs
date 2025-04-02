@@ -1,8 +1,7 @@
 ﻿using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.Roles
+
+namespace Aplication.Interfaces.Roles
 {
     public interface IRolRepository
     {

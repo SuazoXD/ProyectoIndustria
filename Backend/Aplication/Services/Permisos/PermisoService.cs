@@ -1,9 +1,7 @@
-﻿using Application.DTOs.Permiso;
-using Application.Interfaces.Permisos;
+﻿using Aplication.DTOs.Permisos;
+using Aplication.Interfaces.Permisos;
 using Domain.Entities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Application.Services.Permisos
 {

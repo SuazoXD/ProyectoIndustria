@@ -1,8 +1,6 @@
 ﻿using Domain.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.MetodosPago
+namespace Aplication.Interfaces.MetodosPago
 {
     public interface IMetodoPagoRepository
     {

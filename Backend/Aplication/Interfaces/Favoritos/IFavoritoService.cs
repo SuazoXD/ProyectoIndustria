@@ -1,8 +1,7 @@
-﻿using Application.DTOs.Favorito;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Aplication.DTOs.Favorito;
 
-namespace Application.Interfaces.Favoritos
+
+namespace Aplication.Interfaces.Favoritos
 {
     public interface IFavoritoService
     {

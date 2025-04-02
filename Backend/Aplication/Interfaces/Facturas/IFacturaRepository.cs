@@ -1,8 +1,7 @@
 ﻿using Domain.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Application.Interfaces.Facturas
+
+namespace Aplication.Interfaces.Facturas
 {
     public interface IFacturaRepository
     {

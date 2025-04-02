@@ -1,11 +1,9 @@
-﻿using Application.DTOs.ListaDeReproduccion;
-using Application.Interfaces.ListasDeReproduccion;
+﻿using Aplication.DTOs.ListaDeReproduccion;
+using Aplication.Interfaces.ListasDeReproduccion;
 using Domain.AggregateRoots;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Application.Services.ListasDeReproduccion
+
+namespace Aplication.Services.ListasDeReproduccion
 {
     public class ListaDeReproduccionService : IListaDeReproduccionService
     {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 
 namespace Aplication.DTOs.Usuarios
 {

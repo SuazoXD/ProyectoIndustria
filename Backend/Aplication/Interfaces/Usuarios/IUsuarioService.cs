@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿
 using Aplication.DTOs.Usuarios;
 
-namespace Application.Interfaces.Usuarios
+namespace Aplication.Interfaces.Usuarios
 {
     public interface IUsuarioService
     {

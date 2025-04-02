@@ -1,7 +1,6 @@
-﻿using Application.DTOs.Privacidad;
-using Application.DTOs.Privacidades;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿
+using Aplication.DTOs.Privacidades;
+
 
 namespace Aplication.Interfaces.Privacidades
 {

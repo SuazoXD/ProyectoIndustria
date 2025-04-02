@@ -1,9 +1,7 @@
-﻿using Application.DTOs.MetodoPago;
-using Application.Interfaces.MetodosPago;
+﻿using Aplication.DTOs.MetodoPago;
+using Aplication.Interfaces.MetodosPago;
 using Domain.Entities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Application.Services.MetodosPago
 {
