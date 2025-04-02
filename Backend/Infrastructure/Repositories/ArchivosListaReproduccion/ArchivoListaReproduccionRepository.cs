@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Aplication.Interfaces.ArchivosListaReproduccion;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;

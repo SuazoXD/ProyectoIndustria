@@ -3,7 +3,7 @@ using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Application.Interfaces;
+using Aplication.Interfaces;
 using Infrastructure.Repositories.Privacidades;
 using Infrastructure.Repositories.Permisos;
 using Infrastructure.Repositories.Usuarios;

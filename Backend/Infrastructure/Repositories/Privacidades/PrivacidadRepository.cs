@@ -1,9 +1,8 @@
-﻿using Application.Interfaces;
+﻿using Aplication.Interfaces.Privacidades;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.Repositories.Privacidades
 {

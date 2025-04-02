@@ -1,9 +1,7 @@
-﻿using Application.Interfaces;
+﻿using Aplication.Interfaces.Roles;
 using Domain.AggregateRoots;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories.Roles
 {

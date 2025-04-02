@@ -1,9 +1,7 @@
-﻿using Application.Interfaces;
-using Domain.AggregateRoots;
+﻿using Aplication.Interfaces.ArchivosListaReproduccion;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.Repositories.ListaDeReproduccion
 {
