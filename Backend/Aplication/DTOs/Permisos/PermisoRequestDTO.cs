@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Permiso
+﻿namespace Application.DTOs.Permisos
 {
     public class PermisoRequestDTO
     {
