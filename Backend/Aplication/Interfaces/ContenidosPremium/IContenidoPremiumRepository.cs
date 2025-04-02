@@ -1,14 +1,16 @@
 ﻿
-using Aplication.DTOs.ArchivoListaReproduccion;
+
+using Domain.Entities;
 
 namespace Aplication.Interfaces.ContenidosPremium
 {
-    public interface IArchivoListaReproduccionService
-    {
-        Task<IEnumerable<ArchivoListaReproduccionResponseDTO>> GetAllAsync();
-        Task<ArchivoListaReproduccionResponseDTO> GetByIdAsync(int id);
-        Task<ArchivoListaReproduccionResponseDTO> CreateAsync(ArchivoListaReproduccionRequestDTO dto);
-        Task<bool> UpdateAsync(int id, ArchivoListaReproduccionRequestDTO dto);
-        Task<bool> DeleteAsync(int id);
+        public interface IContenidoPremiumRepository
+        {
+            Task<IEnumerable<ContenidoPremium>> GetAllAsync();
+            Task<ContenidoPremium> GetByIdAsync(int id);
+            Task<ContenidoPremium> CreateAsync(ContenidoPremium contenido);
+            Task<bool> UpdateAsync(ContenidoPremium contenido);
+            Task<bool> DeleteAsync(int id);
+        }
     }
-}
+
