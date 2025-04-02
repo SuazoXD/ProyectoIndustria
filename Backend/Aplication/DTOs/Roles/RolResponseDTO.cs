@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Rol
+﻿namespace Aplication.DTOs.Rol
 {
     public class RolResponseDTO
     {

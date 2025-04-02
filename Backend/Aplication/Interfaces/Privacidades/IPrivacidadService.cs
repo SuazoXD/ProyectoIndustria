@@ -3,7 +3,7 @@ using Application.DTOs.Privacidades;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces.Privacidades
+namespace Aplication.Interfaces.Privacidades
 {
     public interface IPrivacidadService
     {
