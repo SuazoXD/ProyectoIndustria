@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.ArchivoListaReproduccion
 {
     public class ArchivoListaReproduccionRepository : IArchivoListaReproduccionRepository
     {

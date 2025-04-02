@@ -4,7 +4,7 @@ using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Creditos
 {
     public class CreditoRepository : ICreditoRepository
     {
