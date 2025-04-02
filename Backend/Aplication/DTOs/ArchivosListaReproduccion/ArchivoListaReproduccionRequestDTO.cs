@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.ArchivoListaReproduccion
+﻿namespace Aplication.DTOs.ArchivoListaReproduccion
 {
     public class ArchivoListaReproduccionRequestDTO
     {

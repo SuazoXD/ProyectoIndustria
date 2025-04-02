@@ -1,5 +1,5 @@
 ﻿
-namespace Application.DTOs.Archivo
+namespace Aplication.DTOs.Archivo
 {
     public class ArchivoResponseDTO
     {
