@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Aplication.Interfaces.Archivos;
 using Domain.AggregateRoots;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
