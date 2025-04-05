@@ -1,81 +1,45 @@
-﻿using Aplication.DTOs.Pago;
-using Aplication.Interfaces.Pagos;
+﻿using Aplication.Interfaces.Pagos;
 using Domain.AggregateRoots;
+using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
-namespace Application.Services.Pagos
+
+namespace Infrastructure.Repositories.Pagos
 {
-    public class PagoService : IPagoService
+    public class PagoRepository : IPagoRepository
     {
-        private readonly IPagoRepository _pagoRepository;
+        private readonly ProjectDBContext _context;
 
-        public PagoService(IPagoRepository pagoRepository)
+        public PagoRepository(ProjectDBContext context)
         {
-            _pagoRepository = pagoRepository;
+            _context = context;
         }
 
-        public async Task<IEnumerable<PagoResponseDTO>> GetAllAsync()
+        public async Task<IEnumerable<Pago>> GetAllAsync() =>
+            await _context.Pagos.ToListAsync();
+
+        public async Task<Pago> GetByIdAsync(int id) =>
+            await _context.Pagos.FindAsync(id);
+
+        public async Task<Pago> CreateAsync(Pago pago)
         {
-            var pagos = await _pagoRepository.GetAllAsync();
-            return pagos.Select(p => new PagoResponseDTO
-            {
-                Id = p.Id,
-                Monto = p.Monto,
-                Estado = p.Estado,
-                FechaPago = p.FechaPago,
-                IdUsuario = p.IdUsuario,
-                MetodoPago = p.MetodoPago
-            });
+            _context.Pagos.Add(pago);
+            await _context.SaveChangesAsync();
+            return pago;
         }
 
-        public async Task<PagoResponseDTO> GetByIdAsync(int id)
+        public async Task<bool> UpdateAsync(Pago pago)
         {
-            var pago = await _pagoRepository.GetByIdAsync(id);
-            if (pago == null) return null;
-            return new PagoResponseDTO
-            {
-                Id = pago.Id,
-                Monto = pago.Monto,
-                Estado = pago.Estado,
-                FechaPago = pago.FechaPago,
-                IdUsuario = pago.IdUsuario,
-                MetodoPago = pago.MetodoPago
-            };
+            _context.Pagos.Update(pago);
+            return await _context.SaveChangesAsync() > 0;
         }
-
-        public async Task<PagoResponseDTO> CreateAsync(PagoRequestDTO dto)
-        {
-            // El constructor de Pago se define como: Pago(int idUsuario, int metodoPago, decimal monto, string estado, DateTime fechaPago)
-            var pago = new Pago(dto.IdUsuario, dto.MetodoPago, dto.Monto, dto.Estado, dto.FechaPago);
-            var created = await _pagoRepository.CreateAsync(pago);
-
-            return new PagoResponseDTO
-            {
-                Id = created.Id,
-                Monto = created.Monto,
-                Estado = created.Estado,
-                FechaPago = created.FechaPago,
-                IdUsuario = created.IdUsuario,
-                MetodoPago = created.MetodoPago
-            };
-        }
-
-
-        public async Task<bool> UpdateAsync(int id, PagoRequestDTO dto)
-        {
-            var pago = await _pagoRepository.GetByIdAsync(id);
-            if (pago == null) return false;
-
-            // Llamar al método Update con el orden correcto:
-            pago.Update(dto.Monto, dto.Estado, dto.MetodoPago, dto.FechaPago);
-
-            return await _pagoRepository.UpdateAsync(pago);
-        }
-
-
 
         public async Task<bool> DeleteAsync(int id)
         {
-            return await _pagoRepository.DeleteAsync(id);
+            var pago = await _context.Pagos.FindAsync(id);
+            if (pago == null) return false;
+            _context.Pagos.Remove(pago);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

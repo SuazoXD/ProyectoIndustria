@@ -1,73 +1,46 @@
-﻿using Aplication.DTOs.Favorito;
-using Aplication.Interfaces.Favoritos;
+﻿using Aplication.Interfaces.Favoritos;
 using Domain.Entities;
+using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 
-namespace Application.Services.Favoritos
+namespace Infrastructure.Repositories.Favoritos
 {
-    public class FavoritoService : IFavoritoService
+    public class FavoritoRepository : IFavoritoRepository
     {
-        private readonly IFavoritoRepository _favoritoRepository;
+        private readonly ProjectDBContext _context;
 
-        public FavoritoService(IFavoritoRepository favoritoRepository)
+        public FavoritoRepository(ProjectDBContext context)
         {
-            _favoritoRepository = favoritoRepository;
+            _context = context;
         }
 
-        public async Task<IEnumerable<FavoritoResponseDTO>> GetAllAsync()
+        public async Task<IEnumerable<Favorito>> GetAllAsync() =>
+            await _context.Favoritos.ToListAsync();
+
+        public async Task<Favorito> GetByIdAsync(int id) =>
+            await _context.Favoritos.FindAsync(id);
+
+        public async Task<Favorito> CreateAsync(Favorito favorito)
         {
-            var favoritos = await _favoritoRepository.GetAllAsync();
-            return favoritos.Select(f => new FavoritoResponseDTO
-            {
-                Id = f.Id,
-                IdUsuario = f.IdUsuario,
-                IdArchivo = f.IdArchivo
-            });
+            _context.Favoritos.Add(favorito);
+            await _context.SaveChangesAsync();
+            return favorito;
         }
 
-        public async Task<FavoritoResponseDTO> GetByIdAsync(int id)
+        public async Task<bool> UpdateAsync(Favorito favorito)
         {
-            var favorito = await _favoritoRepository.GetByIdAsync(id);
-            if (favorito == null)
-                return null;
-            return new FavoritoResponseDTO
-            {
-                Id = favorito.Id,
-                IdUsuario = favorito.IdUsuario,
-                IdArchivo = favorito.IdArchivo
-            };
-        }
-
-        public async Task<FavoritoResponseDTO> CreateAsync(FavoritoRequestDTO dto)
-        {
-            var favorito = new Favorito(dto.IdUsuario, dto.IdArchivo);
-            var created = await _favoritoRepository.CreateAsync(favorito);
-            return new FavoritoResponseDTO
-            {
-                Id = created.Id,
-                IdUsuario = created.IdUsuario,
-                IdArchivo = created.IdArchivo
-            };
-        }
-
-        public async Task<bool> UpdateAsync(int id, FavoritoRequestDTO dto)
-        {
-            var favorito = await _favoritoRepository.GetByIdAsync(id);
-            if (favorito == null)
-                return false;
-
-            // Si las propiedades tienen setters privados, se puede usar reflection o métodos públicos en la entidad.
-            // En este ejemplo, usaremos reflection:
-            var type = typeof(Favorito);
-            type.GetProperty("IdUsuario").SetValue(favorito, dto.IdUsuario);
-            type.GetProperty("IdArchivo").SetValue(favorito, dto.IdArchivo);
-
-            return await _favoritoRepository.UpdateAsync(favorito);
+            _context.Favoritos.Update(favorito);
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
-            return await _favoritoRepository.DeleteAsync(id);
+            var favorito = await _context.Favoritos.FindAsync(id);
+            if (favorito == null)
+                return false;
+            _context.Favoritos.Remove(favorito);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

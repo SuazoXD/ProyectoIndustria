@@ -3,8 +3,7 @@ using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace Infrastructure.Repositories.MetodoPago
+namespace Infrastructure.Repositories.MetodosPago
 {
     public class MetodoPagoRepository : IMetodoPagoRepository
     {
@@ -44,4 +43,3 @@ namespace Infrastructure.Repositories.MetodoPago
         }
     }
 }
-

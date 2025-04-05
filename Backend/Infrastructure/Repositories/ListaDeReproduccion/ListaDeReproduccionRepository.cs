@@ -1,9 +1,10 @@
-﻿using Aplication.Interfaces.ArchivosListaReproduccion;
+﻿using Aplication.Interfaces.ListasDeReproduccion;
+using Domain.AggregateRoots;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Infrastructure.Repositories.ListaDeReproduccion
+namespace Infrastructure.Repositories.ListasDeReproduccion
 {
     public class ListaDeReproduccionRepository : IListaDeReproduccionRepository
     {

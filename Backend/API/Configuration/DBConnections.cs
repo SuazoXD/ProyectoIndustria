@@ -15,7 +15,7 @@ namespace API.Configuration
 
             string dbServer = configuration["DB_HOST"] ?? "localhost";
             string dbPort = configuration["DB_PORT"] ?? "1433";
-            string dbName = configuration["DB_NAME"] ?? "MyDatabase2";
+            string dbName = configuration["DB_NAME"] ?? "MyDatabase3";
             string dbUser = configuration["DB_USER"] ?? "sa";
             string dbPassword = configuration["DB_PASS"] ?? "YourStrong!Passw0rd";
 
