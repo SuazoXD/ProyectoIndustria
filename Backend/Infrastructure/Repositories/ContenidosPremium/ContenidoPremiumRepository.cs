@@ -1,6 +1,9 @@
 ﻿using Aplication.Interfaces.ContenidosPremium;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore; // Necesario para ToListAsync
+using System.Linq; // Opcional si usas LINQ
+
 
 namespace Infrastructure.Repositories.ContenidosPremium
 {
