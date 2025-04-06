@@ -1,9 +1,9 @@
 ﻿using Domain.Common;
 using System.Collections.Generic;
 
-namespace Domain.AggregateRoots
+namespace Domain.Entities
 {
-    public class Rol : AggregateRoot
+    public class Rol : Entity
     {
         public int Id { get; private set; }
         public string NombreRol { get; private set; }

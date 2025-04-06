@@ -3,7 +3,7 @@ using Domain.Common;
 
 namespace Domain.Entities
 {
-    public class Privacidad : AggregateRoot
+    public class Privacidad : Entity
     {
         public int IdUsuario { get; private set; }
         public int IdArchivo { get; private set; }

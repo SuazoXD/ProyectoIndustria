@@ -1,6 +1,6 @@
 ﻿using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Usuarios;
-using Domain.AggregateRoots;
+using Domain.Entities;
 
 namespace Aplication.Services.Usuarios
 {

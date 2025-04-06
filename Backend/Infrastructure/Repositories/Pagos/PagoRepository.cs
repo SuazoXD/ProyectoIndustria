@@ -1,5 +1,5 @@
 ﻿using Aplication.Interfaces.Pagos;
-using Domain.AggregateRoots;
+using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 

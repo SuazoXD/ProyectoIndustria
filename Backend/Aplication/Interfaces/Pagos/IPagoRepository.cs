@@ -1,4 +1,4 @@
-﻿using Domain.AggregateRoots;
+﻿using Domain.Entities;
 
 
 namespace Aplication.Interfaces.Pagos
