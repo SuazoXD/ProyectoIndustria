@@ -85,22 +85,24 @@ dotnet ef database update --project Infrastructure --startup-project API
 🐳 Uso de Docker
 
 Si prefieres ejecutar la aplicación en un contenedor Docker, sigue estos pasos:
-1. Descargar la imagen
-bash
+###1. Descargar la imagen
+```bash
 docker pull ghcr.io/suazoxd/proyectoindustria/api:dev
-2. Crear y ejecutar el contenedor
-bash
-docker run -d --name proyectoindustria-api --env-file .env -p 8080:8080 ghcr.io/suazoxd/proyectoindustria/api:dev
+```
 
+###2. Crear y ejecutar el contenedor
+```bash
+docker run -d --name proyectoindustria-api --env-file .env -p 8080:8080 ghcr.io/suazoxd/proyectoindustria/api:dev
+```
     Nota: Asegúrate de estar en el directorio con el archivo .env configurado.
     Puedes cambiar el puerto externo (ej: -p 5000:8080).
 
-3. Ver los logs
-bash
+###3. Ver los logs
+```bash
 docker logs proyectoindustria-api
----
+```
 
-## 👤 Autor
+## 👤 Autores
 
 Desarrollado por **GrooveArchive**. Visita el proyecto en [GitHub](https://github.com/SuazoXD/ProyectoIndustria). ¡Gracias por tu interés! 🙌
 
