@@ -1,11 +1,10 @@
 ﻿using Domain.Common;
-using Domain.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace Domain.AggregateRoots
+namespace Domain.Entities
 {
-    public class Pago : AggregateRoot
+    public class Pago : Entity
     {
         public int Id { get; private set; }
         public int IdUsuario { get; private set; }

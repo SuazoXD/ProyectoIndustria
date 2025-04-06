@@ -1,5 +1,4 @@
-﻿using Domain.AggregateRoots;
-using Domain.Common;
+﻿using Domain.Common;
 
 namespace Domain.Entities // o AggregateRoots si es necesario
 {

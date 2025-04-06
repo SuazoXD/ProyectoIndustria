@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Permiso : AggregateRoot
+    public class Permiso : Entity
     {
         public int Id { get; private set; }
         public string Descripcion { get; private set; }

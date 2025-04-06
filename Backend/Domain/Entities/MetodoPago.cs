@@ -1,5 +1,4 @@
-﻿using Domain.AggregateRoots;
-using Domain.Common;
+﻿using Domain.Common;
 using System.Collections.Generic;
 
 namespace Domain.Entities
@@ -8,7 +7,6 @@ namespace Domain.Entities
     {
         public string NombreMetodo { get; private set; }
 
-        // Nueva propiedad booleana para indicar si el método de pago está activo
         public bool Activo { get; private set; }
 
         public ICollection<Pago> Pagos { get; set; }
@@ -25,7 +23,7 @@ namespace Domain.Entities
             Pagos = new List<Pago>();
         }
 
-        // Método para actualizar el valor de la propiedad Activo, si es necesario
+        
         public void ActualizarEstado(bool activo)
         {
             Activo = activo;

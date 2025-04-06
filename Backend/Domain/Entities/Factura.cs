@@ -1,10 +1,9 @@
-using Domain.AggregateRoots;
 using Domain.Common;
 using System;
 
 namespace Domain.Entities
 {
-    public class Factura : AggregateRoot
+    public class Factura : Entity
     {
         public int Id { get; private set; }
         public int IdPago { get; private set; }

@@ -1,6 +1,6 @@
 ﻿using Aplication.DTOs.Rol;
 using Aplication.Interfaces.Roles;
-using Domain.AggregateRoots;
+using Domain.Entities;
 using System.Reflection;
 
 

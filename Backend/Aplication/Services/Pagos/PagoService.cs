@@ -1,6 +1,6 @@
 ﻿using Aplication.DTOs.Pago;
 using Aplication.Interfaces.Pagos;
-using Domain.AggregateRoots;
+using Domain.Entities;
 
 
 namespace Aplication.Services.Pagos
