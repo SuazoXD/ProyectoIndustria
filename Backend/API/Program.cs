@@ -14,14 +14,52 @@ using Infrastructure.Repositories.Permisos;
 using Aplication.Interfaces.Privacidades;
 using Aplication.Services.Privacidades;
 using Infrastructure.Repositories.Privacidades;
+using Microsoft.Data.SqlClient;
+using API.Custom;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+using API;
+using Domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar JWT
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = jwtSettings.GetValue<string>("Key");
+var issuer = jwtSettings.GetValue<string>("Issuer");
+var audience = jwtSettings.GetValue<string>("Audience");
+
+
 var dbConfig = new DBConnections();
-var jwtSettings = new JwtSettings(builder.Configuration);
 
 builder.Services.AddDbContext<ProjectDBContext>(options =>
     options.UseSqlServer(dbConfig.ConnectionString));
+
+//Utilidades
+builder.Services.AddScoped<Utilidades>();
+builder.Services.AddAuthentication(configureOptions =>
+{
+    configureOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    configureOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(configureOptions =>
+{
+    configureOptions.RequireHttpsMetadata = false;
+    configureOptions.SaveToken = true;
+    configureOptions.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
 
 builder.Services.AddScoped<IRolRepository, RolRepository>();
 builder.Services.AddScoped<IRolService, RolService>();
