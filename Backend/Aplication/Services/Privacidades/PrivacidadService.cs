@@ -1,4 +1,7 @@
-﻿using Aplication.DTOs.Privacidades;
+﻿using Aplication.DTOs.Archivo;
+using Aplication.DTOs.Permisos;
+using Aplication.DTOs.Privacidades;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Privacidades;
 using Domain.Entities;
 
@@ -24,7 +27,28 @@ namespace Aplication.Services.Privacidades
                 IdArchivo = p.IdArchivo,
                 PermisoId = p.PermisoId,
                 Autodestruccion = p.Autodestruccion,
-                DispositivosPermitidos = p.DispositivosPermitidos
+                DispositivosPermitidos = p.DispositivosPermitidos,
+                Usuario = p.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = p.Usuario.Id,
+                    NombreUsuario = p.Usuario.NombreUsuario,
+                    Correo = p.Usuario.Correo,
+                    FechaRegistro = p.Usuario.FechaRegistro,
+                    IdRol = p.Usuario.IdRol
+                } : null,
+                Archivo = p.Archivo != null ? new ArchivoResponseDTO
+                {
+                    Id = p.Archivo.Id,
+                    NombreArchivo = p.Archivo.NombreArchivo,
+                    TipoArchivo = p.Archivo.TipoArchivo,
+                    FechaSubida = p.Archivo.FechaSubida,
+                    IdUsuario = p.Archivo.IdUsuario
+                } : null,
+                Permiso = p.Permiso != null ? new PermisoResponseDTO
+                {
+                    Id = p.Permiso.Id,
+                    Descripcion = p.Permiso.Descripcion
+                } : null,
             });
         }
 

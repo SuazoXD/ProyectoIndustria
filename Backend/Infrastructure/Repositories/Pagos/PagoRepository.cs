@@ -15,8 +15,14 @@ namespace Infrastructure.Repositories.Pagos
             _context = context;
         }
 
-        public async Task<IEnumerable<Pago>> GetAllAsync() =>
-            await _context.Pagos.ToListAsync();
+        public async Task<IEnumerable<Pago>> GetAllAsync()
+        {
+            return await _context.Pagos
+               .Include(p => p.Usuario)
+               .Include(p => p.MetodoPagoEntity)
+               .ToListAsync();
+
+        }
 
         public async Task<Pago> GetByIdAsync(int id) =>
             await _context.Pagos.FindAsync(id);

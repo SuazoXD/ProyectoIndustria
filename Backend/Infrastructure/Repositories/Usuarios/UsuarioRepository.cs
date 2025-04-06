@@ -14,8 +14,12 @@ namespace Infrastructure.Repositories.Usuarios
         public UsuarioRepository(ProjectDBContext context) => _context = context;
 
         // Método para obtener todos los usuarios
-        public async Task<IEnumerable<Usuario>> GetAllAsync() =>
-            await _context.Usuarios.ToListAsync();
+        public async Task<IEnumerable<Usuario>> GetAllAsync()
+        {
+            return await _context.Usuarios
+                 .Include(p => p.Rol)
+                 .ToListAsync();
+        }
 
         // Método para obtener un usuario por su ID
         public async Task<Usuario> GetByIdAsync(int id) =>

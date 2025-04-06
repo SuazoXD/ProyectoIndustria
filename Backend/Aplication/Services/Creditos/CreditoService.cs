@@ -1,5 +1,6 @@
 ﻿
 using Aplication.DTOs.Creditos;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Creditos;
 using Domain.Entities;
 
@@ -22,7 +23,15 @@ namespace Aplication.Services.Creditos
                 Id = c.Id,
                 IdUsuario = c.IdUsuario,
                 Cantidad = c.Cantidad,
-                FechaAdquisicion = c.FechaAdquisicion
+                FechaAdquisicion = c.FechaAdquisicion,
+                Usuario = c.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = c.Usuario.Id,
+                    NombreUsuario = c.Usuario.NombreUsuario,
+                    Correo = c.Usuario.Correo,
+                    FechaRegistro = c.Usuario.FechaRegistro,
+                    IdRol = c.Usuario.IdRol
+                } : null
             });
         }
 

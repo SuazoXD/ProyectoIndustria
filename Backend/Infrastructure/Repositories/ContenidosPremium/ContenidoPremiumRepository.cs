@@ -12,9 +12,13 @@ namespace Infrastructure.Repositories.ContenidosPremium
         private readonly ProjectDBContext _context;
         public ContenidoPremiumRepository(ProjectDBContext context) => _context = context;
 
-        public async Task<IEnumerable<ContenidoPremium>> GetAllAsync() =>
-            await _context.ContenidosPremium.ToListAsync();
+        public async Task<IEnumerable<ContenidoPremium>> GetAllAsync()
+        {
+            return await _context.ContenidoPremium
+               .Include(p => p.Usuario)
+               .ToListAsync();
 
+        }
         public async Task<ContenidoPremium> GetByIdAsync(int id) =>
             await _context.ContenidoPremium.FindAsync(id);
 

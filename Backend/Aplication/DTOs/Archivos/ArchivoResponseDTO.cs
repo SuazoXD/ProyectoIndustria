@@ -1,4 +1,6 @@
 ﻿
+using Aplication.DTOs.Usuarios;
+
 namespace Aplication.DTOs.Archivo
 {
     public class ArchivoResponseDTO
@@ -10,5 +12,7 @@ namespace Aplication.DTOs.Archivo
         public string FuenteAlmacenamiento { get; set; }
         public string Metadatos { get; set; }
         public int IdUsuario { get; set; }
+
+        public UsuarioResponseDTO? Usuario { get; set; }
     }
 }

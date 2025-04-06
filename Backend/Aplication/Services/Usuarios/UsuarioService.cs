@@ -1,4 +1,5 @@
-﻿using Aplication.DTOs.Usuarios;
+﻿using Aplication.DTOs.Rol;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Usuarios;
 using Domain.Entities;
 
@@ -21,7 +22,14 @@ namespace Aplication.Services.Usuarios
                 Id = u.Id,
                 NombreUsuario = u.NombreUsuario,
                 Correo = u.Correo,
-                FechaRegistro = u.FechaRegistro
+                FechaRegistro = u.FechaRegistro,
+                IdRol = u.IdRol,
+                Rol = u.Rol != null ? new RolResponseDTO
+                {
+                    Id = u.Rol.Id,
+                    NombreRol = u.Rol.NombreRol,
+                    Descripcion = u.Rol.Descripcion
+                } : null
             });
         }
 

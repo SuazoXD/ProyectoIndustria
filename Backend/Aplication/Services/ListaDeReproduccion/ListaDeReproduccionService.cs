@@ -1,4 +1,5 @@
 ﻿using Aplication.DTOs.ListaDeReproduccion;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.ListasDeReproduccion;
 using Domain.AggregateRoots;
 
@@ -22,7 +23,15 @@ namespace Aplication.Services.ListasDeReproduccion
                 Id = l.Id,
                 IdUsuario = l.IdUsuario,
                 NombreLista = l.NombreLista,
-                Descripcion = l.Descripcion
+                Descripcion = l.Descripcion,
+                Usuario = l.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = l.Usuario.Id,
+                    NombreUsuario = l.Usuario.NombreUsuario,
+                    Correo = l.Usuario.Correo,
+                    FechaRegistro = l.Usuario.FechaRegistro,
+                    IdRol = l.Usuario.IdRol
+                } : null,
             });
         }
 

@@ -1,5 +1,6 @@
 ﻿
 using Aplication.DTOs.ContenidosPremium;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.ContenidosPremium;
 using Domain.Entities;
 
@@ -23,7 +24,15 @@ namespace Aplication.Services.ContenidosPremium
                 NombreContenido = cp.NombreContenido,
                 TipoContenido = cp.TipoContenido,
                 IdUsuario = cp.IdUsuario,
-                Precio = cp.Precio
+                Precio = cp.Precio,
+                Usuario = cp.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = cp.Usuario.Id,
+                    NombreUsuario = cp.Usuario.NombreUsuario,
+                    Correo = cp.Usuario.Correo,
+                    FechaRegistro = cp.Usuario.FechaRegistro,
+                    IdRol = cp.Usuario.IdRol
+                } : null
             });
         }
 

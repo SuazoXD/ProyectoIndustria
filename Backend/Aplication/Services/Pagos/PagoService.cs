@@ -1,4 +1,6 @@
-﻿using Aplication.DTOs.Pago;
+﻿using Aplication.DTOs.MetodoPago;
+using Aplication.DTOs.Pago;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Pagos;
 using Domain.Entities;
 
@@ -24,7 +26,21 @@ namespace Aplication.Services.Pagos
                 Estado = p.Estado,
                 FechaPago = p.FechaPago,
                 IdUsuario = p.IdUsuario,
-                MetodoPago = p.MetodoPago
+                MetodoPago = p.MetodoPago,
+                Usuario = p.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = p.Usuario.Id,
+                    NombreUsuario = p.Usuario.NombreUsuario,
+                    Correo = p.Usuario.Correo,
+                    FechaRegistro = p.Usuario.FechaRegistro,
+                    IdRol = p.Usuario.IdRol
+                } : null,
+                MetodoPagos = p.MetodoPagoEntity != null ? new MetodoPagoResponseDTO
+                {
+                    Id = p.MetodoPagoEntity.Id,
+                    NombreMetodo = p.MetodoPagoEntity.NombreMetodo,
+                    Activo = p.MetodoPagoEntity.Activo
+                } : null
             });
         }
 
