@@ -1,5 +1,7 @@
 ﻿
+using Aplication.DTOs.Archivo;
 using Aplication.DTOs.ArchivoListaReproduccion;
+using Aplication.DTOs.ListaDeReproduccion;
 using Aplication.Interfaces.ArchivosListaReproduccion;
 using Domain.Entities;
 
@@ -21,7 +23,22 @@ namespace Aplication.Services.ArchivosListaReproduccion
             {
                 Id = e.Id,
                 IdLista = e.IdLista,
-                IdArchivo = e.IdArchivo
+                IdArchivo = e.IdArchivo,
+                Lista = e.ListaDeReproduccion != null ? new ListaDeReproduccionResponseDTO
+                {
+                    Id = e.ListaDeReproduccion.Id,
+                    NombreLista = e.ListaDeReproduccion.NombreLista,
+                    Descripcion = e.ListaDeReproduccion.Descripcion,
+                    IdUsuario = e.ListaDeReproduccion.IdUsuario
+                } : null,
+                Archivo = e.Archivo != null ? new ArchivoResponseDTO
+                {
+                    Id = e.Archivo.Id,
+                    NombreArchivo = e.Archivo.NombreArchivo,
+                    TipoArchivo = e.Archivo.TipoArchivo,
+                    FechaSubida = e.Archivo.FechaSubida,
+                    IdUsuario = e.Archivo.IdUsuario
+                } : null
             });
         }
 

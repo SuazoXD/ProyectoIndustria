@@ -1,5 +1,7 @@
 ﻿
 
+using Aplication.DTOs.Rol;
+
 namespace Aplication.DTOs.Usuarios
 {
     public class UsuarioResponseDTO
@@ -9,5 +11,7 @@ namespace Aplication.DTOs.Usuarios
         public string Correo { get; set; }
         public int IdRol { get; set; }
         public DateTime FechaRegistro { get; set; }
+
+        public RolResponseDTO? Rol { get; set; }
     }
 }

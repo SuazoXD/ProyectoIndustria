@@ -1,4 +1,6 @@
 ﻿
+using Aplication.DTOs.Usuarios;
+
 namespace Aplication.DTOs.Creditos
 {
     public class CreditoResponseDTO
@@ -7,5 +9,7 @@ namespace Aplication.DTOs.Creditos
         public int IdUsuario { get; set; }
         public int Cantidad { get; set; }
         public DateTime FechaAdquisicion { get; set; }
+
+        public UsuarioResponseDTO? Usuario { get; set; }
     }
 }

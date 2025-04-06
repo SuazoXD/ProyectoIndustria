@@ -16,8 +16,14 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<ArchivoListaReproduccion>> GetAllAsync() =>
-        await _context.Archivos_ListasDeReproduccion.ToListAsync();
+        public async Task<IEnumerable<ArchivoListaReproduccion>> GetAllAsync()
+        {
+            return await _context.ArchivosListasDeReproduccion
+               .Include(p => p.ListaDeReproduccion)
+               .Include(p => p.Archivo)
+               .ToListAsync();
+
+        }
 
         public async Task<ArchivoListaReproduccion> GetByIdAsync(int id) =>
             await _context.Archivos_ListasDeReproduccion.FindAsync(id);

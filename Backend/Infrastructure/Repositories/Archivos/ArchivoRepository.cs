@@ -11,8 +11,13 @@ namespace Infrastructure.Repositories.Archivos
         private readonly ProjectDBContext _context;
         public ArchivoRepository(ProjectDBContext context) => _context = context;
 
-        public async Task<IEnumerable<Archivo>> GetAllAsync() =>
-            await _context.Archivos.ToListAsync();
+        public async Task<IEnumerable<Archivo>> GetAllAsync()
+        {
+            return await _context.Archivos
+               .Include(p => p.Usuario)
+               .ToListAsync();
+
+        }
 
         public async Task<Archivo> GetByIdAsync(int id) =>
             await _context.Archivos.FindAsync(id);

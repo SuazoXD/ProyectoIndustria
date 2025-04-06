@@ -12,8 +12,13 @@ namespace Infrastructure.Repositories.Facturas
         private readonly ProjectDBContext _context;
         public FacturaRepository(ProjectDBContext context) => _context = context;
 
-        public async Task<IEnumerable<Factura>> GetAllAsync() =>
-            await _context.Facturas.ToListAsync();
+        public async Task<IEnumerable<Factura>> GetAllAsync()
+        {
+            return await _context.Facturas
+               .Include(p => p.Pago)
+               .ToListAsync();
+
+        }
 
         public async Task<Factura> GetByIdAsync(int id) =>
             await _context.Facturas.FindAsync(id);

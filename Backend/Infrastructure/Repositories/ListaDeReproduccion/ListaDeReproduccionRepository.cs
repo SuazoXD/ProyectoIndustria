@@ -11,8 +11,13 @@ namespace Infrastructure.Repositories.ListasDeReproduccion
         private readonly ProjectDBContext _context;
         public ListaDeReproduccionRepository(ProjectDBContext context) => _context = context;
 
-        public async Task<IEnumerable<ListaDeReproduccion>> GetAllAsync() =>
-            await _context.ListasDeReproduccion.ToListAsync();
+        public async Task<IEnumerable<ListaDeReproduccion>> GetAllAsync()
+        {
+            return await _context.ListasDeReproduccion
+               .Include(p => p.Usuario)
+               .ToListAsync();
+
+        }
 
         public async Task<ListaDeReproduccion> GetByIdAsync(int id) =>
             await _context.ListasDeReproduccion.FindAsync(id);

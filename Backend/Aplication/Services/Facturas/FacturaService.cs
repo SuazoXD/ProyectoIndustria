@@ -1,4 +1,5 @@
 ﻿using Aplication.DTOs.Factura;
+using Aplication.DTOs.Pago;
 using Aplication.Interfaces.Facturas;
 using Domain.Entities;
 using System.Reflection;
@@ -24,7 +25,17 @@ namespace Aplication.Services.Facturas
                 NumeroFactura = f.NumeroFactura,
                 FechaEmision = f.FechaEmision,
                 TotalPagar = f.TotalPagar,
-                EstadoFactura = f.EstadoFactura
+                EstadoFactura = f.EstadoFactura,
+                Pago = f.Pago != null ? new PagoResponseDTO
+                {
+                    Id = f.Pago.Id,
+                    IdUsuario = f.Pago.IdUsuario,
+                    MetodoPago = f.Pago.MetodoPago,
+                    Monto = f.Pago.Monto,
+                    Estado = f.Pago.Estado,
+                    FechaPago = f.Pago.FechaPago
+
+                } : null
             });
         }
 

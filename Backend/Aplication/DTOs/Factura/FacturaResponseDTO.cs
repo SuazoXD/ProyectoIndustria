@@ -1,4 +1,6 @@
 ﻿
+using Aplication.DTOs.Pago;
+
 namespace Aplication.DTOs.Factura
 {
     public class FacturaResponseDTO
@@ -9,5 +11,7 @@ namespace Aplication.DTOs.Factura
         public DateTime FechaEmision { get; set; }
         public decimal TotalPagar { get; set; }
         public string EstadoFactura { get; set; }
+
+        public PagoResponseDTO? Pago { get; set; }
     }
 }

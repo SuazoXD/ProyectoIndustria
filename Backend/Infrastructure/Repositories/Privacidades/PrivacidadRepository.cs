@@ -15,8 +15,15 @@ namespace Infrastructure.Repositories.Privacidades
             _context = context;
         }
 
-        public async Task<IEnumerable<Privacidad>> GetAllAsync() =>
-            await _context.Privacidad.ToListAsync();
+        public async Task<IEnumerable<Privacidad>> GetAllAsync()
+        {
+            return await _context.Privacidad
+               .Include(p => p.Usuario)
+               .Include(p => p.Archivo)
+               .Include(p => p.Permiso)
+               .ToListAsync();
+
+        }
 
         public async Task<Privacidad> GetByIdAsync(int id) =>
             await _context.Privacidad.FindAsync(id);

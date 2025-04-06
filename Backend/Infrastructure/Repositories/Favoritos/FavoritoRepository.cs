@@ -15,8 +15,14 @@ namespace Infrastructure.Repositories.Favoritos
             _context = context;
         }
 
-        public async Task<IEnumerable<Favorito>> GetAllAsync() =>
-            await _context.Favoritos.ToListAsync();
+        public async Task<IEnumerable<Favorito>> GetAllAsync()
+        {
+            return await _context.Favoritos
+               .Include(p => p.Usuario)
+               .Include(p => p.Archivo)
+               .ToListAsync();
+
+        }
 
         public async Task<Favorito> GetByIdAsync(int id) =>
             await _context.Favoritos.FindAsync(id);

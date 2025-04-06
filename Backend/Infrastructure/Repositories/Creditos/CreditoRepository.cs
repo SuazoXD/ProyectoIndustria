@@ -15,8 +15,13 @@ namespace Infrastructure.Repositories.Creditos
             _context = context;
         }
 
-        public async Task<IEnumerable<Credito>> GetAllAsync() =>
-            await _context.Creditos.ToListAsync();
+        public async Task<IEnumerable<Credito>> GetAllAsync()
+        {
+            return await _context.Creditos
+               .Include(p => p.Usuario)
+               .ToListAsync();
+
+        }
 
         public async Task<Credito> GetByIdAsync(int id) =>
             await _context.Creditos.FindAsync(id);

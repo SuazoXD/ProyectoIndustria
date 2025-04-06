@@ -1,5 +1,6 @@
 ﻿
 using Aplication.DTOs.Archivo;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Archivos;
 using Aplication.Interfaces.Usuarios;
 using Domain.AggregateRoots;
@@ -28,7 +29,16 @@ namespace Aplication.Services.Archivos
                 FechaSubida = a.FechaSubida,
                 FuenteAlmacenamiento = a.FuenteAlmacenamiento,
                 Metadatos = a.Metadatos,
-                IdUsuario = a.IdUsuario
+                IdUsuario = a.IdUsuario,
+                Usuario = a.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = a.Usuario.Id,
+                    NombreUsuario = a.Usuario.NombreUsuario,
+                    Correo = a.Usuario.Correo,
+                    FechaRegistro = a.Usuario.FechaRegistro,
+                    IdRol = a.Usuario.IdRol
+                } : null
+
             });
         }
 

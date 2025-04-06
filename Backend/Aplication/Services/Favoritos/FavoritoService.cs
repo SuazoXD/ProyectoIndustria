@@ -1,4 +1,6 @@
-﻿using Aplication.DTOs.Favorito;
+﻿using Aplication.DTOs.Archivo;
+using Aplication.DTOs.Favorito;
+using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Favoritos;
 using Domain.Entities;
 
@@ -21,7 +23,24 @@ namespace Aplication.Services.Favoritos
             {
                 Id = f.Id,
                 IdUsuario = f.IdUsuario,
-                IdArchivo = f.IdArchivo
+                IdArchivo = f.IdArchivo,
+                Usuario = f.Usuario != null ? new UsuarioResponseDTO
+                {
+                    Id = f.Usuario.Id,
+                    NombreUsuario = f.Usuario.NombreUsuario,
+                    Correo = f.Usuario.Correo,
+                    FechaRegistro = f.Usuario.FechaRegistro,
+                    IdRol = f.Usuario.IdRol
+                } : null,
+                Archivo = f.Archivo != null ? new ArchivoResponseDTO
+                {
+                    Id = f.Archivo.Id,
+                    NombreArchivo = f.Archivo.NombreArchivo,
+                    TipoArchivo = f.Archivo.TipoArchivo,
+                    FuenteAlmacenamiento = f.Archivo.FuenteAlmacenamiento,
+                    FechaSubida = f.Archivo.FechaSubida,
+                    IdUsuario = f.Archivo.IdUsuario
+                } : null
             });
         }
 
