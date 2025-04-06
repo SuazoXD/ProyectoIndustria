@@ -18,6 +18,7 @@ using Infrastructure.Repositories.Privacidades;
 var builder = WebApplication.CreateBuilder(args);
 
 var dbConfig = new DBConnections();
+var jwtSettings = new JwtSettings(builder.Configuration);
 
 builder.Services.AddDbContext<ProjectDBContext>(options =>
     options.UseSqlServer(dbConfig.ConnectionString));
