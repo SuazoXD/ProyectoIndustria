@@ -1,4 +1,5 @@
 ﻿
+
 using Aplication.DTOs.Privacidades;
 
 
@@ -11,5 +12,8 @@ namespace Aplication.Interfaces.Privacidades
         Task<PrivacidadResponseDTO> CreateAsync(PrivacidadRequestDTO dto);
         Task<bool> UpdateAsync(int id, PrivacidadRequestDTO dto);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<PrivacidadResponseDTO>> GetByUserIdAsync(int userId);
+
     }
 }
