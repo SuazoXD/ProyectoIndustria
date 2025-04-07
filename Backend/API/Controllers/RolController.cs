@@ -1,60 +1,74 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Infrastructure.Persistence;
 using Aplication.DTOs.Rol;
-using Aplication.Interfaces.Roles;
 
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/Rol")]
+    [Route("api/[controller]")]
     public class RolController : ControllerBase
     {
-        private readonly IRolService _rolService;
+        private readonly ProjectDBContext _context;
 
-        public RolController(IRolService rolService)
+        public RolController(ProjectDBContext context)
         {
-            _rolService = rolService;
+            _context = context;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        // Obtener el Rol del usuario desde el token
+        [HttpGet("GetRol")]
+        [Authorize]  // Requiere autenticación
+        public async Task<IActionResult> GetRol()
         {
-            var roles = await _rolService.GetAllAsync();
-            return Ok(roles);
+            // Obtener el token desde el header Authorization
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            if (string.IsNullOrEmpty(token))
+                return Unauthorized(new { message = "Token no proporcionado." });
+
+            try
+            {
+                // Decodificar el token
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
+
+                if (jsonToken == null)
+                    return Unauthorized(new { message = "Token inválido." });
+
+                // Extraer el claim del IdRol
+                var idRolClaim = jsonToken?.Claims.FirstOrDefault(c => c.Type == "IdRol")?.Value;
+
+                if (idRolClaim == null)
+                    return Unauthorized(new { message = "IdRol no encontrado en el token." });
+
+                // Buscar el rol en la base de datos
+                var rolId = int.Parse(idRolClaim);
+                var rol = await _context.Roles.FirstOrDefaultAsync(r => r.Id == rolId);
+
+                if (rol == null)
+                    return NotFound(new { message = "Rol no encontrado." });
+
+                // Si todo está bien, devolver los datos del rol
+                var rolResponse = new RolResponseDTO
+                {
+                    Id = rol.Id,
+                    NombreRol = rol.NombreRol,
+                    Descripcion = rol.Descripcion
+                };
+
+                return Ok(rolResponse);
+            }
+            catch
+            {
+                return Unauthorized(new { message = "Error al procesar el token." });
+            }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var rol = await _rolService.GetByIdAsync(id);
-            if (rol == null)
-                return NotFound();
-            return Ok(rol);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] RolRequestDTO dto)
-        {
-            var created = await _rolService.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] RolRequestDTO dto)
-        {
-            var result = await _rolService.UpdateAsync(id, dto);
-            if (!result)
-                return NotFound();
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var result = await _rolService.DeleteAsync(id);
-            if (!result)
-                return NotFound();
-            return NoContent();
-        }
     }
 }
