@@ -12,3 +12,4 @@ namespace Aplication.Interfaces.Pagos
         Task<bool> DeleteAsync(int id);
     }
 }
+//co
