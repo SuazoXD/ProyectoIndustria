@@ -16,6 +16,19 @@ namespace Aplication.Services.Privacidades
         {
             _privacidadRepository = privacidadRepository;
         }
+        public async Task<IEnumerable<PrivacidadResponseDTO>> GetByUserIdAsync(int userId)
+        {
+            var privacidad = await _privacidadRepository.GetAllAsync();
+            return privacidad
+                .Where(p => p.IdUsuario == userId)
+                .Select(p => new PrivacidadResponseDTO
+                {
+                    Id = p.Id,
+                    IdUsuario = p.IdUsuario
+
+                });
+        }
+
 
         public async Task<IEnumerable<PrivacidadResponseDTO>> GetAllAsync()
         {
@@ -112,5 +125,7 @@ namespace Aplication.Services.Privacidades
         {
             return await _privacidadRepository.DeleteAsync(id);
         }
+
+
     }
 }

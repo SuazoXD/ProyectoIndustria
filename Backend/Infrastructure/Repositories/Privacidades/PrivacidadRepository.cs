@@ -49,5 +49,10 @@ namespace Infrastructure.Repositories.Privacidades
             _context.Privacidad.Remove(privacidad);
             return await _context.SaveChangesAsync() > 0;
         }
+        public async Task<IEnumerable<Privacidad>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Privacidad.Where(p => p.IdUsuario == userId).ToListAsync();
+        }
+
     }
 }
