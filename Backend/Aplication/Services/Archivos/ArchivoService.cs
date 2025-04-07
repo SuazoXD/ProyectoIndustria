@@ -111,6 +111,7 @@ namespace Aplication.Services.Archivos
             var archivos = await _archivoRepository.GetAllAsync();
             return archivos.Where(a => a.IdUsuario == idUsuario).Select(a => new ArchivoResponseDTO
             {
+                //Archivos
                 Id = a.Id,
                 NombreArchivo = a.NombreArchivo,
                 TipoArchivo = a.TipoArchivo,
