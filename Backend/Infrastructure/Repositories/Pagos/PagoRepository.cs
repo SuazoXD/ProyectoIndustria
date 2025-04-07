@@ -47,5 +47,11 @@ namespace Infrastructure.Repositories.Pagos
             _context.Pagos.Remove(pago);
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<IEnumerable<Pago>> GetAllByUserIdAsync(int userId)
+        {
+            return await _context.Pagos.Where(p => p.IdUsuario == userId).ToListAsync();
+        }
+
     }
 }
