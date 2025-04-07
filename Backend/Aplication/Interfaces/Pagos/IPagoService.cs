@@ -9,5 +9,8 @@ namespace Aplication.Interfaces.Pagos
         Task<PagoResponseDTO> CreateAsync(PagoRequestDTO dto);
         Task<bool> UpdateAsync(int id, PagoRequestDTO dto);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<PagoResponseDTO>> GetAllByUserIdAsync(int userId);
+
     }
 }

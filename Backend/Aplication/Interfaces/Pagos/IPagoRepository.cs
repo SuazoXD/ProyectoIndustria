@@ -10,5 +10,8 @@ namespace Aplication.Interfaces.Pagos
         Task<Pago> CreateAsync(Pago pago);
         Task<bool> UpdateAsync(Pago pago);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<Pago>> GetAllByUserIdAsync(int userId);
+
     }
 }

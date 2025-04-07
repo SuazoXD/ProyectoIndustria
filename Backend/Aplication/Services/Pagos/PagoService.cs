@@ -94,5 +94,22 @@ namespace Aplication.Services.Pagos
         {
             return await _pagoRepository.DeleteAsync(id);
         }
+
+        public async Task<IEnumerable<PagoResponseDTO>> GetAllByUserIdAsync(int userId)
+        {
+            var pagos = await _pagoRepository.GetAllAsync();
+            return pagos
+                .Where(p => p.IdUsuario == userId)
+                .Select(p => new PagoResponseDTO
+                {
+                    Id = p.Id,
+                    IdUsuario = p.IdUsuario,
+                    Monto = p.Monto,
+                    Estado = p.Estado,
+                    FechaPago = p.FechaPago,
+                    MetodoPago = p.MetodoPago
+                });
+        }
+
     }
 }
