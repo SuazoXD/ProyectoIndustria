@@ -1,5 +1,4 @@
-﻿
-using Aplication.DTOs.Archivo;
+﻿using Aplication.DTOs.Archivo;
 using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Archivos;
 using Aplication.Interfaces.Usuarios;
@@ -10,12 +9,12 @@ namespace Aplication.Services.Archivos
     public class ArchivoService : IArchivoService
     {
         private readonly IArchivoRepository _archivoRepository;
-        private readonly IUsuarioRepository _usuarioRepository; 
+        private readonly IUsuarioRepository _usuarioRepository;
 
         public ArchivoService(IArchivoRepository archivoRepository, IUsuarioRepository usuarioRepository) // Modificar el constructor
         {
             _archivoRepository = archivoRepository;
-            _usuarioRepository = usuarioRepository; 
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<IEnumerable<ArchivoResponseDTO>> GetAllAsync()
@@ -38,20 +37,15 @@ namespace Aplication.Services.Archivos
                     FechaRegistro = a.Usuario.FechaRegistro,
                     IdRol = a.Usuario.IdRol
                 } : null
-
             });
         }
 
         public async Task<ArchivoResponseDTO> GetByIdAsync(int id)
         {
-       
             var archivo = await _archivoRepository.GetByIdAsync(id);
-
-            
             if (archivo == null)
-                return null; 
+                return null;
 
-            
             return new ArchivoResponseDTO
             {
                 Id = archivo.Id,
@@ -64,17 +58,14 @@ namespace Aplication.Services.Archivos
             };
         }
 
-
         public async Task<ArchivoResponseDTO> CreateAsync(ArchivoRequestDTO dto)
         {
-           
             var usuario = await _usuarioRepository.GetByIdAsync(dto.IdUsuario);
             if (usuario == null)
             {
                 throw new ArgumentException("El usuario no existe.");
             }
 
-            
             var archivo = new Archivo(
                 nombreArchivo: dto.NombreArchivo,
                 tipoArchivo: dto.TipoArchivo,
@@ -83,10 +74,8 @@ namespace Aplication.Services.Archivos
                 idUsuario: dto.IdUsuario
             );
 
-            
             var createdArchivo = await _archivoRepository.CreateAsync(archivo);
 
-           
             return new ArchivoResponseDTO
             {
                 Id = createdArchivo.Id,
@@ -99,29 +88,38 @@ namespace Aplication.Services.Archivos
             };
         }
 
-
         public async Task<bool> UpdateAsync(int id, ArchivoRequestDTO dto)
         {
-           
             var archivo = await _archivoRepository.GetByIdAsync(id);
-
-           
             if (archivo == null)
-                return false; 
+                return false;
 
-           
             archivo.Update(dto.NombreArchivo, dto.TipoArchivo, dto.FuenteAlmacenamiento, dto.Metadatos);
 
-            
             return await _archivoRepository.UpdateAsync(archivo);
         }
-
-
 
         public async Task<bool> DeleteAsync(int id)
         {
             return await _archivoRepository.DeleteAsync(id);
         }
+
+        // Nuevo método para obtener archivos por usuario
+        public async Task<IEnumerable<ArchivoResponseDTO>> GetByUserAsync(int idUsuario)
+        {
+            // Obtener todos los archivos y filtrarlos por IdUsuario
+            var archivos = await _archivoRepository.GetAllAsync();
+            return archivos.Where(a => a.IdUsuario == idUsuario).Select(a => new ArchivoResponseDTO
+            {
+                //Archivos
+                Id = a.Id,
+                NombreArchivo = a.NombreArchivo,
+                TipoArchivo = a.TipoArchivo,
+                FechaSubida = a.FechaSubida,
+                FuenteAlmacenamiento = a.FuenteAlmacenamiento,
+                Metadatos = a.Metadatos,
+                IdUsuario = a.IdUsuario
+            });
+        }
     }
 }
-
