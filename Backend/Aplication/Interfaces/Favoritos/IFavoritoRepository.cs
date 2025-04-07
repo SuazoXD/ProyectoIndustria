@@ -10,5 +10,8 @@ namespace Aplication.Interfaces.Favoritos
         Task<Favorito> CreateAsync(Favorito favorito);
         Task<bool> UpdateAsync(Favorito favorito);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<Credito>> GetAllByUserIdAsync(int userId);
+
     }
 }
