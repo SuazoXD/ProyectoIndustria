@@ -10,5 +10,7 @@ namespace Aplication.Interfaces.ListasDeReproduccion
         Task<ListaDeReproduccionResponseDTO> CreateAsync(ListaDeReproduccionRequestDTO dto);
         Task<bool> UpdateAsync(int id, ListaDeReproduccionRequestDTO dto);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<ListaDeReproduccionResponseDTO>> GetAllByUserIdAsync(int userId);
     }
 }

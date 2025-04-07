@@ -1,4 +1,5 @@
-﻿using Aplication.DTOs.ListaDeReproduccion;
+﻿
+using Aplication.DTOs.ListaDeReproduccion;
 using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.ListasDeReproduccion;
 using Domain.AggregateRoots;
@@ -79,5 +80,21 @@ namespace Aplication.Services.ListasDeReproduccion
         {
             return await _listaRepository.DeleteAsync(id);
         }
+        public async Task<IEnumerable<ListaDeReproduccionResponseDTO>> GetAllByUserIdAsync(int userId)
+        {
+            var listas = await _listaRepository.GetAllAsync();
+            return listas
+                .Where(l => l.IdUsuario == userId)
+                .Select(l => new ListaDeReproduccionResponseDTO
+                {
+                    Id = l.Id,
+                    IdUsuario = l.IdUsuario,
+                    NombreLista = l.NombreLista,
+                    Descripcion = l.Descripcion,
+
+
+                });
+        }
+
     }
 }
