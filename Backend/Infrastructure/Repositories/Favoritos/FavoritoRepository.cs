@@ -3,7 +3,6 @@ using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Infrastructure.Repositories.Favoritos
 {
     public class FavoritoRepository : IFavoritoRepository
@@ -21,7 +20,6 @@ namespace Infrastructure.Repositories.Favoritos
                .Include(p => p.Usuario)
                .Include(p => p.Archivo)
                .ToListAsync();
-
         }
 
         public async Task<Favorito> GetByIdAsync(int id) =>
@@ -47,6 +45,20 @@ namespace Infrastructure.Repositories.Favoritos
                 return false;
             _context.Favoritos.Remove(favorito);
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<IEnumerable<Favorito>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Favoritos
+                                 .Where(f => f.IdUsuario == userId)
+                                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Credito>> GetAllByUserIdAsync(int userId)
+        {
+            return await _context.Creditos
+                                 .Where(c => c.IdUsuario == userId)
+                                 .ToListAsync();
         }
     }
 }
