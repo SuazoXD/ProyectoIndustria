@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Aplication.DTOs.Usuarios;
 using Aplication.Interfaces.Usuarios;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -55,5 +56,18 @@ namespace API.Controllers
                 return NotFound();
             return NoContent();
         }
+        [Authorize]
+        [HttpGet("perfil")]
+        public async Task<IActionResult> GetUserProfile()
+        {
+            var userId = int.Parse(User.FindFirst("Id").Value); // Obtener el Id del usuario desde el token
+            var usuario = await _usuarioService.GetByIdAsync(userId); // Usar el Id para obtener los datos del usuario
+
+            if (usuario == null)
+                return NotFound(new { mensaje = "Usuario no encontrado" });
+
+            return Ok(usuario);
+        }
+
     }
 }
