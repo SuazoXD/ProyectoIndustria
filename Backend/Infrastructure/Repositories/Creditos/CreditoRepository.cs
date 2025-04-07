@@ -47,5 +47,11 @@ namespace Infrastructure.Repositories.Creditos
             _context.Creditos.Remove(credito);
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<IEnumerable<Credito>> GetAllByUserIdAsync(int userId)
+        {
+            return await _context.Creditos.Where(c => c.IdUsuario == userId).ToListAsync();
+        }
+
     }
 }

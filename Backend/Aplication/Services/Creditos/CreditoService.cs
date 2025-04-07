@@ -68,7 +68,7 @@ namespace Aplication.Services.Creditos
             if (credito == null)
                 return false;
 
-           
+
             credito.GetType().GetProperty("Cantidad").SetValue(credito, dto.Cantidad);
             return await _creditoRepository.UpdateAsync(credito);
         }
@@ -77,5 +77,21 @@ namespace Aplication.Services.Creditos
         {
             return await _creditoRepository.DeleteAsync(id);
         }
+
+        public async Task<IEnumerable<CreditoResponseDTO>> GetAllByUserIdAsync(int userId)
+        {
+            var creditos = await _creditoRepository.GetAllAsync();
+            return creditos
+                .Where(c => c.IdUsuario == userId)
+                .Select(c => new CreditoResponseDTO
+                {
+                    Id = c.Id,
+                    IdUsuario = c.IdUsuario,
+                    Cantidad = c.Cantidad,
+                    FechaAdquisicion = c.FechaAdquisicion
+                });
+        }
+
     }
 }
+

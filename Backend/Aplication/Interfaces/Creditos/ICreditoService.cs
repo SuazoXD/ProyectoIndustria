@@ -10,6 +10,9 @@ namespace Aplication.Interfaces.Creditos
         Task<CreditoResponseDTO> CreateAsync(CreditoRequestDTO dto);
         Task<bool> UpdateAsync(int id, CreditoRequestDTO dto);
         Task<bool> DeleteAsync(int id);
+
+        Task<IEnumerable<CreditoResponseDTO>> GetAllByUserIdAsync(int userId);
+
     }
 }
 
