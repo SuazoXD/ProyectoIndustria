@@ -10,5 +10,9 @@ namespace Aplication.Interfaces.Archivos
         Task<ArchivoResponseDTO> CreateAsync(ArchivoRequestDTO dto);
         Task<bool> UpdateAsync(int id, ArchivoRequestDTO dto);
         Task<bool> DeleteAsync(int id);
+
+        // Nuevo método
+        Task<IEnumerable<ArchivoResponseDTO>> GetByUserAsync(int idUsuario);
     }
+
 }
