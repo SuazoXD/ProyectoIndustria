@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: clase-industria  
+    runs-on: NSUAZO  
 
     steps:
     - name: Checkout code
